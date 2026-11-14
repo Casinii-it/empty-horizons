@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3fld2hp0n346"]
+[gd_scene load_steps=6 format=3 uid="uid://b3fld2hp0n346"]
 
 [ext_resource type="Texture2D" uid="uid://n1v4q5faucyu" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cx8du5qtu1mr0" path="res://scripts/movement.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://lcfnftedya85" path="res://assets/rocket.mp3" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://c3gccg8vkilo" path="res://scenes/camera_2d.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
@@ -17,6 +18,11 @@ texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RigidBody2D"]
+stream = ExtResource("3_dqkch")
+volume_db = -2.305
+autoplay = true
 
 [node name="Node2D" type="Node2D" parent="."]
 

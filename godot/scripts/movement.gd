@@ -39,5 +39,9 @@ func _process(delta: float) -> void:
 		pass #return
 	apply_torque_impulse(Input.get_axis("a", "d") * ROTATIONAL_SPEED)
 	
-	var forward_thrust = Input.get_axis("s", "w") * ACCELERATION * delta
+	var forward_thrust = Input.get_action_strength("w") * ACCELERATION * delta
 	apply_force(radians_to_vector(rotation - PI/2) * forward_thrust)
+	if forward_thrust:
+		get_node("AudioStreamPlayer2D").stream_paused = false
+	else:
+		get_node("AudioStreamPlayer2D").stream_paused = true
