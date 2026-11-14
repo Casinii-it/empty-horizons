@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bks0y33pbd03m"]
+
+[ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dicfqt32vgtq8" path="res://scripts/planet 1.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://b3fld2hp0n346" path="res://scenes/player.tscn" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://xt4ni4blyows" path="res://assets/grapple ring.svg" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scenes/intro.gd" id="7_o6xl0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
+
+[node name="Node" type="Node"]
+
+[node name="Stars" type="Node" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Stars"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(1024, 576)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars/Parallax2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_tbgi4")
+
+[node name="PhysicsController" type="Node" parent="."]
+script = ExtResource("1_o5qli")
+
+[node name="Player" parent="." instance=ExtResource("2_jyhfs")]
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planets"]
+position = Vector2(3715, 2822.9998)
+scale = Vector2(7, 7)
+script = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D"]
+scale = Vector2(30.219269, 30.219269)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D"]
+rotation = -3.1415925
+scale = Vector2(0.254, 0.254)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D"]
+texture = ExtResource("4_jyhfs")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Planets"]
+position = Vector2(-4527, 6364)
+scale = Vector2(9.898, 9.898)
+script = ExtResource("2_0wfyh")
+mass = 2e+19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D2"]
+scale = Vector2(30.219269, 30.219269)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D2"]
+rotation = 3.1415927
+scale = Vector2(0.28946722, 0.28946722)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D2"]
+texture = ExtResource("4_jyhfs")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Intro" type="Node" parent="UI"]
+script = ExtResource("7_o6xl0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Intro"]
+offset_left = -781.0
+offset_top = 1724.0
+offset_right = -20.0
+offset_bottom = 1861.0
+scale = Vector2(1.2000022, 1.2070787)
+bbcode_enabled = true
+text = "[font_size=100]Empty Horizons"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UI/Intro"]
+offset_left = 385.99994
+offset_top = 3777.0
+offset_right = 1441.0
+offset_bottom = 4051.0
+rotation = 0.9781799
+scale = Vector2(1.0653887, 1.0716714)
+bbcode_enabled = true
+text = "[font_size=100]A short story game by
+Oliver and Jonathan"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
