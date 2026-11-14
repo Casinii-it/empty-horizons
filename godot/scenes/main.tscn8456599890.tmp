@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bks0y33pbd03m"]
+
+[ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dicfqt32vgtq8" path="res://scripts/planet 1.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://b3fld2hp0n346" path="res://scenes/player.tscn" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://n1v4q5faucyu" path="res://icon.svg" id="3_sugp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
+
+[node name="Node" type="Node"]
+
+[node name="PhysicsController" type="Node" parent="."]
+script = ExtResource("1_o5qli")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("2_jyhfs")]
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planets"]
+position = Vector2(2.0000305, 725)
+scale = Vector2(7, 7)
+script = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D"]
+scale = Vector2(7.12, 7.12)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D"]
+texture = ExtResource("3_sugp2")
