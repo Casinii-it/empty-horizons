@@ -21,6 +21,7 @@ func get_gravity_force(delta):
 	
 	
 func _ready() -> void:
+	get_node("AnimatedSprite2D").play("default")
 	cutscene = true
 	await get_tree().create_timer(5).timeout  #35
 	cutscene = false
@@ -43,9 +44,12 @@ func _process(delta: float) -> void:
 	apply_force(radians_to_vector(rotation - PI/2) * forward_thrust)
 	if forward_thrust:
 		get_node("Rocket").stream_paused = false
-		get_node("AnimatedSprite2D")
+		get_node("AnimatedSprite2D").visible = true
+		get_node("Sprite2D").visible = false
 	else:
 		get_node("Rocket").stream_paused = true
+		get_node("AnimatedSprite2D").visible = false
+		get_node("Sprite2D").visible = true
 	
 	if Input.get_axis("a", "d"):
 		get_node("RCS").stream_paused = false

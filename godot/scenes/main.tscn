@@ -63,6 +63,23 @@ texture = ExtResource("6_tefeu")
 [node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D2"]
 texture = ExtResource("4_jyhfs")
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="Planets"]
+position = Vector2(-804.00006, -1227)
+scale = Vector2(1.75944, 1.75944)
+script = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D3"]
+scale = Vector2(30.219269, 30.219269)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D3"]
+rotation = -3.1415925
+scale = Vector2(0.254, 0.254)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D3"]
+texture = ExtResource("4_jyhfs")
+
 [node name="Player" parent="." instance=ExtResource("2_jyhfs")]
 
 [node name="UI" type="Node" parent="."]
