@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xt4ni4blyows" path="res://assets/grapple ring.svg" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scenes/intro.gd" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scripts/intro.gd" id="7_o6xl0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
 
@@ -25,8 +25,6 @@ texture = ExtResource("5_tbgi4")
 
 [node name="PhysicsController" type="Node" parent="."]
 script = ExtResource("1_o5qli")
-
-[node name="Player" parent="." instance=ExtResource("2_jyhfs")]
 
 [node name="Planets" type="Node" parent="."]
 
@@ -65,12 +63,14 @@ texture = ExtResource("6_tefeu")
 [node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D2"]
 texture = ExtResource("4_jyhfs")
 
+[node name="Player" parent="." instance=ExtResource("2_jyhfs")]
+
 [node name="UI" type="Node" parent="."]
 
 [node name="Intro" type="Node" parent="UI"]
 script = ExtResource("7_o6xl0")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/Intro"]
+[node name="Title" type="RichTextLabel" parent="UI/Intro"]
 offset_left = -781.0
 offset_top = 1724.0
 offset_right = -20.0
@@ -82,7 +82,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="UI/Intro"]
+[node name="Credits" type="RichTextLabel" parent="UI/Intro"]
 offset_left = 385.99994
 offset_top = 3777.0
 offset_right = 1441.0
@@ -91,7 +91,9 @@ rotation = 0.9781799
 scale = Vector2(1.0653887, 1.0716714)
 bbcode_enabled = true
 text = "[font_size=100]A short story game by
-Oliver and Jonathan"
+Oliver, Jonathan and An"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Node" type="Node" parent="UI"]

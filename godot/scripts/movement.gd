@@ -3,7 +3,7 @@ extends RigidBody2D
 const ACCELERATION = 10000
 const ROTATIONAL_SPEED = 70
 
-var cutscene = true
+@export var cutscene = true
 
 func vector_to_radians(vector):
 	return Vector2.DOWN.angle_to(vector)
@@ -29,11 +29,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var gravity_vec = get_gravity_force(delta)
 	apply_force(gravity_vec)
-	var scale = min(max((gravity_vec.length()-20)/100, .4), 1.2)
-	get_node("../Node2D/Camera2D").zoom = lerp(get_node("../Node2D/Camera2D").zoom, Vector2(scale, scale), 0.05)
+	var camera_scale = min(max((gravity_vec.length()-20)/100, .4), 1.2)
+	get_node("../Node2D/Camera2D").zoom = lerp(get_node("../Node2D/Camera2D").zoom, Vector2(camera_scale, camera_scale), 0.05)
 	var camera_node = get_node("../Node2D")
 	camera_node.rotation = vector_to_radians(gravity_vec.normalized())
-	camera_node.position = lerp(camera_node.position, position, 0.1)
+	camera_node.position = lerp(camera_node.position, position, 0.05)
 
 	if cutscene:
 		pass #return
@@ -42,6 +42,12 @@ func _process(delta: float) -> void:
 	var forward_thrust = Input.get_action_strength("w") * ACCELERATION * delta
 	apply_force(radians_to_vector(rotation - PI/2) * forward_thrust)
 	if forward_thrust:
-		get_node("AudioStreamPlayer2D").stream_paused = false
+		get_node("Rocket").stream_paused = false
+		get_node("AnimatedSprite2D")
 	else:
-		get_node("AudioStreamPlayer2D").stream_paused = true
+		get_node("Rocket").stream_paused = true
+	
+	if Input.get_axis("a", "d"):
+		get_node("RCS").stream_paused = false
+	else:
+		get_node("RCS").stream_paused = true
