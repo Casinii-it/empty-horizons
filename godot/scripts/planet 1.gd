@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var mass = 1*10**18.
+@export var mass = 1*10**17.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

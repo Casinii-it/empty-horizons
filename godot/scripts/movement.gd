@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const ACCELERATION = 10000
-const ROTATIONAL_SPEED = 70
+const ROTATIONAL_SPEED = 140
 
 @export var cutscene = true
 
@@ -17,7 +17,7 @@ func get_gravity_force(delta):
 	for planet in get_node("/root/Node/Planets").get_children():
 		var distance_squared = planet.position.distance_to(position)
 		gravity_vec += (planet.position - position).normalized() * (G*planet.mass/distance_squared)
-	return gravity_vec * delta
+	return gravity_vec * delta * 4000
 	
 	
 func _ready() -> void:
