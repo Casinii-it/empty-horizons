@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bks0y33pbd03m"]
+[gd_scene load_steps=24 format=3 uid="uid://bks0y33pbd03m"]
 
 [ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://dicfqt32vgtq8" path="res://scripts/planet 1.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://b3fld2hp0n346" path="res://scenes/player.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://ca0cwal3ecipc" path="res://scenes/office.gd" id="3_yc10j"]
 [ext_resource type="Texture2D" uid="uid://xt4ni4blyows" path="res://assets/grapple ring.svg" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://b1t1f7okh117r" path="res://assets/falmland/mother_farm.png" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bfqfoasdp6vp5" path="res://assets/the_glorch/planet_glorch.png" id="6_tipki"]
+[ext_resource type="Script" uid="uid://xjvsco6daj61" path="res://scenes/farm.gd" id="6_yc10j"]
 [ext_resource type="Texture2D" uid="uid://dmtwjxyaipftj" path="res://assets/falmland/farm_tree.png" id="7_0ld40"]
 [ext_resource type="AudioStream" uid="uid://df2or0t4jciqt" path="res://assets/the_glorch/glorch_music.mp3" id="7_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8rutc4htqnyy" path="res://assets/the_glorch/glorch_house.png" id="7_a8y0u"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bea2mfn8mocq2" path="res://assets/falmland/hay.png" id="8_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://ccyo2mbu3ng3p" path="res://assets/the_glorch/glorch_monitor.png" id="8_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://bg0xhd7v05m4e" path="res://assets/falmland/house.png" id="9_yc10j"]
+[ext_resource type="Script" uid="uid://ci7seqquahlaf" path="res://scenes/glorch.gd" id="10_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://8m2fvmgia6or" path="res://assets/the_glorch/glorch_pc.png" id="10_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://csod1uluy3act" path="res://assets/the_glorch/glorch_tree.png" id="11_muem4"]
 [ext_resource type="Texture2D" uid="uid://bfa0mhobr348b" path="res://assets/the_glorch/glorch_motherboard.png" id="14_dp3eg"]
@@ -30,6 +32,7 @@
 
 [node name="Parallax2D" type="Parallax2D" parent="Stars"]
 scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(-8459, -5030)
 repeat_size = Vector2(1024, 576)
 repeat_times = 7
 
@@ -42,120 +45,122 @@ script = ExtResource("1_o5qli")
 
 [node name="Planets" type="Node" parent="."]
 
-[node name="Small" type="StaticBody2D" parent="Planets"]
-position = Vector2(3714.9998, 2823)
+[node name="Office" type="StaticBody2D" parent="Planets"]
+position = Vector2(4317.0005, 2648.0002)
 scale = Vector2(7, 7)
-script = ExtResource("2_0wfyh")
+script = ExtResource("3_yc10j")
+mass = 2.2233720368547752e+15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Small"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Office"]
 scale = Vector2(29.312, 29.312)
 shape = SubResource("CircleShape2D_o5qli")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Planets/Small"]
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Office"]
 rotation = -3.1415925
 scale = Vector2(0.254, 0.254)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets/Small"]
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Office"]
 texture = ExtResource("4_jyhfs")
 
-[node name="Large" type="StaticBody2D" parent="Planets"]
+[node name="Farm" type="StaticBody2D" parent="Planets"]
 position = Vector2(-4527, 6364)
 scale = Vector2(9.898, 9.898)
-script = ExtResource("2_0wfyh")
-mass = 2e+30
+script = ExtResource("6_yc10j")
+mass = 4.0337203685477585e+15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Large"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Farm"]
 scale = Vector2(29.312, 29.312)
 shape = SubResource("CircleShape2D_o5qli")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Farm"]
 rotation = 3.1415927
 scale = Vector2(0.28946722, 0.28946722)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D3" type="Sprite2D" parent="Planets/Farm"]
 rotation = 3.1415927
 scale = Vector2(0.21440126, 0.21440126)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D4" type="Sprite2D" parent="Planets/Farm"]
 rotation = 3.1415927
 scale = Vector2(0.1933189, 0.1933189)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Farm"]
 scale = Vector2(0.7381021, 0.7381021)
 texture = ExtResource("6_jkv2x")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D5" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(148.51485, -298.44415)
 rotation = 0.44910058
 scale = Vector2(0.038273674, 0.038273674)
 texture = ExtResource("7_0ld40")
 
-[node name="Sprite2D10" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D10" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(197.51466, -269.34735)
 rotation = 0.598595
 scale = Vector2(0.038273674, 0.038273674)
 texture = ExtResource("7_0ld40")
 
-[node name="Sprite2D11" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D11" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(-126.28816, -308.2441)
 rotation = -0.47066212
 scale = Vector2(0.038273674, 0.038273674)
 texture = ExtResource("7_0ld40")
 
-[node name="Sprite2D12" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D12" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(-195.39302, -267.22568)
 rotation = -0.69477355
 scale = Vector2(0.038273674, 0.038273674)
 texture = ExtResource("7_0ld40")
 
-[node name="Sprite2D16" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D16" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(32.531803, 360.57788)
 rotation = -3.2973256
 scale = Vector2(0.10839926, 0.10839926)
 texture = ExtResource("7_0ld40")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D6" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(-295.7163, -83.95635)
 rotation = 0.17379808
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("8_gqmmt")
 
-[node name="Sprite2D13" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D13" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(-302.88947, -16.568993)
 rotation = 0.027600914
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("8_gqmmt")
 
-[node name="Sprite2D14" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D14" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(-338.6542, -50.313187)
 rotation = 0.027600914
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("8_gqmmt")
 
-[node name="Sprite2D15" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D15" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(313.19464, -46.77712)
 rotation = 0.027600914
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("8_gqmmt")
 
-[node name="Sprite2D7" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D7" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(2.4247165, -332.7945)
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("9_yc10j")
 
-[node name="Sprite2D9" type="Sprite2D" parent="Planets/Large"]
+[node name="Sprite2D9" type="Sprite2D" parent="Planets/Farm"]
 position = Vector2(2.6267774, -332.69348)
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("9_yc10j")
 
 [node name="Glorch" type="StaticBody2D" parent="Planets"]
 position = Vector2(7782.998, 7622.0005)
-scale = Vector2(2, 2)
-script = ExtResource("2_0wfyh")
+scale = Vector2(1.8672848, 2)
+script = ExtResource("10_gqmmt")
+mass = 1.30702036854776e+15
 
 [node name="Sprite2D" type="Sprite2D" parent="Planets/Glorch"]
 scale = Vector2(2, 2)
@@ -174,7 +179,7 @@ scale = Vector2(0.87709403, 0.87709403)
 texture = ExtResource("8_jkv2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Glorch"]
-scale = Vector2(2, 2)
+scale = Vector2(-79.52263, -79.52263)
 shape = SubResource("CircleShape2D_o5qli")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Planets/Glorch"]

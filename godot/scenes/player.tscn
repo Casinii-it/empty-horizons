@@ -70,12 +70,12 @@ autoplay = true
 position = Vector2(0, 13)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_fjrip")
-frame_progress = 0.082681224
+frame_progress = 0.6515911
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 position = Vector2(-1, 13)
 scale = Vector2(0.15686199, 0.15686199)
-polygon = PackedVector2Array(200, 350, -200, 350, -150, 50, -150, -300, 0, -550, 150, -300, 150, 50)
+polygon = PackedVector2Array(150, 350, -150, 350, -150, 50, -150, -300, 0, -550, 150, -300, 150, 50)
 
 [node name="Story Controller" type="Node" parent="."]
 script = ExtResource("6_tuyoq")
