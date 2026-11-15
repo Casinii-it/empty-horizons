@@ -70,7 +70,7 @@ autoplay = true
 position = Vector2(0, 13)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_fjrip")
-frame_progress = 0.9404987
+frame_progress = 0.082681224
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 position = Vector2(-1, 13)
