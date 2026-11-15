@@ -1,0 +1,301 @@
+[gd_scene load_steps=27 format=3 uid="uid://bks0y33pbd03m"]
+
+[ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://b3fld2hp0n346" path="res://scenes/player.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://ca0cwal3ecipc" path="res://scenes/office.gd" id="3_yc10j"]
+[ext_resource type="Texture2D" uid="uid://dv0oouxmlqyvq" path="res://assets/office/office.png" id="5_jscy8"]
+[ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://b1t1f7okh117r" path="res://assets/falmland/mother_farm.png" id="6_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bfqfoasdp6vp5" path="res://assets/the_glorch/planet_glorch.png" id="6_tipki"]
+[ext_resource type="Script" uid="uid://xjvsco6daj61" path="res://scenes/farm.gd" id="6_yc10j"]
+[ext_resource type="Texture2D" uid="uid://dmtwjxyaipftj" path="res://assets/falmland/farm_tree.png" id="7_0ld40"]
+[ext_resource type="AudioStream" uid="uid://df2or0t4jciqt" path="res://assets/the_glorch/glorch_music.mp3" id="7_85g3d"]
+[ext_resource type="Texture2D" uid="uid://c8rutc4htqnyy" path="res://assets/the_glorch/glorch_house.png" id="7_a8y0u"]
+[ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scripts/intro.gd" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bea2mfn8mocq2" path="res://assets/falmland/hay.png" id="8_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://ccyo2mbu3ng3p" path="res://assets/the_glorch/glorch_monitor.png" id="8_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://bg0xhd7v05m4e" path="res://assets/falmland/house.png" id="9_yc10j"]
+[ext_resource type="Script" uid="uid://ci7seqquahlaf" path="res://scenes/glorch.gd" id="10_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://8m2fvmgia6or" path="res://assets/the_glorch/glorch_pc.png" id="10_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://csod1uluy3act" path="res://assets/the_glorch/glorch_tree.png" id="11_muem4"]
+[ext_resource type="Texture2D" uid="uid://bfa0mhobr348b" path="res://assets/the_glorch/glorch_motherboard.png" id="14_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://ctwcmx13qa6np" path="res://assets/worm_hole.png" id="18_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://bk3p7tu8n3k3s" path="res://assets/falmland/shovel.png" id="19_jscy8"]
+[ext_resource type="Script" uid="uid://bhoheb26l48kv" path="res://scenes/item.gd" id="21_pm3ni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6deb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ld40"]
+
+[node name="Node" type="Node"]
+
+[node name="Stars" type="Node" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Stars"]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(-8459, -5030)
+repeat_size = Vector2(1024, 576)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars/Parallax2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_tbgi4")
+
+[node name="PhysicsController" type="Node" parent="."]
+script = ExtResource("1_o5qli")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(951, 13517)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(-53.372337, -53.372337)
+shape = SubResource("CircleShape2D_y6deb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-117.99999, -107.99999)
+scale = Vector2(4.5240397, 4.5240397)
+texture = ExtResource("18_pm3ni")
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Office" type="StaticBody2D" parent="Planets"]
+position = Vector2(4317.0005, 2648.0002)
+scale = Vector2(7, 7)
+script = ExtResource("3_yc10j")
+mass = 2.2233720368547752e+15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Office"]
+scale = Vector2(29.312, 29.312)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Office"]
+rotation = -3.1415925
+scale = Vector2(0.254, 0.254)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Office"]
+texture = ExtResource("5_jscy8")
+
+[node name="Farm" type="StaticBody2D" parent="Planets"]
+position = Vector2(-4527, 6364)
+scale = Vector2(9.898, 9.898)
+script = ExtResource("6_yc10j")
+mass = 4.0337203685477585e+15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Farm"]
+scale = Vector2(29.312, 29.312)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Farm"]
+rotation = 3.1415927
+scale = Vector2(0.28946722, 0.28946722)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Planets/Farm"]
+rotation = 3.1415927
+scale = Vector2(0.21440126, 0.21440126)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Planets/Farm"]
+rotation = 3.1415927
+scale = Vector2(0.1933189, 0.1933189)
+texture = ExtResource("6_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Farm"]
+scale = Vector2(0.7381021, 0.7381021)
+texture = ExtResource("6_jkv2x")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(148.51485, -298.44415)
+rotation = 0.44910058
+scale = Vector2(0.038273674, 0.038273674)
+texture = ExtResource("7_0ld40")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(197.51466, -269.34735)
+rotation = 0.598595
+scale = Vector2(0.038273674, 0.038273674)
+texture = ExtResource("7_0ld40")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(-126.28816, -308.2441)
+rotation = -0.47066212
+scale = Vector2(0.038273674, 0.038273674)
+texture = ExtResource("7_0ld40")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(-195.39302, -267.22568)
+rotation = -0.69477355
+scale = Vector2(0.038273674, 0.038273674)
+texture = ExtResource("7_0ld40")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(32.531803, 360.57788)
+rotation = -3.2973256
+scale = Vector2(0.10839926, 0.10839926)
+texture = ExtResource("7_0ld40")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(-295.7163, -83.95635)
+rotation = 0.17379808
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("8_gqmmt")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(-302.88947, -16.568993)
+rotation = 0.027600914
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("8_gqmmt")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(-338.6542, -50.313187)
+rotation = 0.027600914
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("8_gqmmt")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(313.19464, -46.77712)
+rotation = 0.027600914
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("8_gqmmt")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(2.4247165, -332.7945)
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("9_yc10j")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Planets/Farm"]
+position = Vector2(2.6267774, -332.69348)
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("9_yc10j")
+
+[node name="Glorch" type="StaticBody2D" parent="Planets"]
+position = Vector2(7481, 8899)
+scale = Vector2(2, 2)
+script = ExtResource("10_gqmmt")
+mass = 1.30702036854776e+15
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Glorch"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_tipki")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(228.00098, -922.50024)
+rotation = 0.2500998
+scale = Vector2(0.59570456, 0.59570456)
+texture = ExtResource("7_a8y0u")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-341.99902, -808.00024)
+rotation = -0.41707158
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("8_jkv2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Glorch"]
+scale = Vector2(-79.52263, -79.52263)
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Planets/Glorch"]
+scale = Vector2(2, 2)
+stream = ExtResource("7_85g3d")
+pitch_scale = 1.92
+autoplay = true
+max_distance = 4000.0
+
+[node name="Sprite2D4" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-770.499, -546.50024)
+rotation = -0.9634342
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-265.49902, 817.49976)
+rotation = -2.7503943
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-155.99902, 890.99976)
+rotation = -2.8998413
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-45.999023, 878.49976)
+rotation = -2.8998413
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(130.00098, -1450.5002)
+rotation = 1.7082503
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("11_muem4")
+
+[node name="Player" parent="." instance=ExtResource("2_jyhfs")]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Intro" type="Node" parent="UI"]
+script = ExtResource("7_o6xl0")
+
+[node name="Title" type="RichTextLabel" parent="UI/Intro"]
+offset_left = -781.0
+offset_top = 1724.0
+offset_right = -20.0
+offset_bottom = 1861.0
+scale = Vector2(1.2000022, 1.2070787)
+bbcode_enabled = true
+text = "[font_size=100]Empty Horizons"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Credits" type="RichTextLabel" parent="UI/Intro"]
+offset_left = 385.99994
+offset_top = 3777.0
+offset_right = 1441.0
+offset_bottom = 4051.0
+rotation = 0.9781799
+scale = Vector2(1.0653887, 1.0716714)
+bbcode_enabled = true
+text = "[font_size=100]A short story game by
+Oliver, Jonathan and An"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Node" type="Node" parent="UI"]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Items"]
+position = Vector2(7670.001, 10623)
+rotation = 0.84086406
+scale = Vector2(9.907205, 9.907205)
+script = ExtResource("21_pm3ni")
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/StaticBody2D"]
+scale = Vector2(0.08853093, 0.08853093)
+texture = ExtResource("14_dp3eg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/StaticBody2D"]
+shape = SubResource("RectangleShape2D_0ld40")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Items"]
+position = Vector2(-7545, 6493)
+rotation = 5.1695147
+scale = Vector2(6.987407, 6.987407)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/StaticBody2D2"]
+position = Vector2(3.2940063, 0.10298157)
+scale = Vector2(1.6091266, 3.9553936)
+shape = SubResource("RectangleShape2D_0ld40")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Items/StaticBody2D2"]
+position = Vector2(4.41098, -18.40161)
+scale = Vector2(0.08916494, 0.08916494)
+texture = ExtResource("19_jscy8")

@@ -3,6 +3,8 @@ extends RigidBody2D
 const ACCELERATION = 10000
 const ROTATIONAL_SPEED = 140
 
+var items_collected = 0
+var win = false
 @export var cutscene = true
 
 func vector_to_radians(vector):
@@ -17,7 +19,7 @@ func get_gravity_force(delta):
 	for planet in get_node("/root/Node/Planets").get_children():
 		var distance_squared = planet.position.distance_to(position)
 		gravity_vec += (planet.position - position).normalized() * (G*planet.mass/distance_squared)
-	return gravity_vec * delta * 4000
+	return gravity_vec * delta * 3000
 	
 	
 func _ready() -> void:
@@ -55,3 +57,18 @@ func _process(delta: float) -> void:
 		get_node("RCS").stream_paused = false
 	else:
 		get_node("RCS").stream_paused = true
+		
+	
+	for item in get_node("/root/Node/Items").get_children():
+		print(position.distance_to(item.position))
+		print(items_collected)
+		win = true
+		if position.distance_to(item.position) < 500:
+			if item.position.distance_to(position) < 1000000000:
+				win = false
+			item.visible = false
+			items_collected += 1
+			item.position = Vector2(99999999999999,99999999999999)
+			
+	if position.distance_to(get_node("/root/Node/wormhole").position) < 1000 and win:
+		position = Vector2(100000,100000)

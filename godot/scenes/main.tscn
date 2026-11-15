@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bks0y33pbd03m"]
+[gd_scene load_steps=28 format=3 uid="uid://bks0y33pbd03m"]
 
 [ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b3fld2hp0n346" path="res://scenes/player.tscn" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://ca0cwal3ecipc" path="res://scenes/office.gd" id="3_yc10j"]
-[ext_resource type="Texture2D" uid="uid://xt4ni4blyows" path="res://assets/grapple ring.svg" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dv0oouxmlqyvq" path="res://assets/office/office.png" id="5_jscy8"]
 [ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://b1t1f7okh117r" path="res://assets/falmland/mother_farm.png" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
@@ -13,14 +13,18 @@
 [ext_resource type="AudioStream" uid="uid://df2or0t4jciqt" path="res://assets/the_glorch/glorch_music.mp3" id="7_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8rutc4htqnyy" path="res://assets/the_glorch/glorch_house.png" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scripts/intro.gd" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://17p171xpu5n6" path="res://assets/office/office_laptop.png" id="7_y6deb"]
 [ext_resource type="Texture2D" uid="uid://bea2mfn8mocq2" path="res://assets/falmland/hay.png" id="8_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://ccyo2mbu3ng3p" path="res://assets/the_glorch/glorch_monitor.png" id="8_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://ccuwkqsa40kkx" path="res://assets/arrow.png" id="8_og1vs"]
 [ext_resource type="Texture2D" uid="uid://bg0xhd7v05m4e" path="res://assets/falmland/house.png" id="9_yc10j"]
 [ext_resource type="Script" uid="uid://ci7seqquahlaf" path="res://scenes/glorch.gd" id="10_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://8m2fvmgia6or" path="res://assets/the_glorch/glorch_pc.png" id="10_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://csod1uluy3act" path="res://assets/the_glorch/glorch_tree.png" id="11_muem4"]
 [ext_resource type="Texture2D" uid="uid://bfa0mhobr348b" path="res://assets/the_glorch/glorch_motherboard.png" id="14_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://ctwcmx13qa6np" path="res://assets/worm_hole.png" id="18_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://bk3p7tu8n3k3s" path="res://assets/falmland/shovel.png" id="19_jscy8"]
+[ext_resource type="Script" uid="uid://bhoheb26l48kv" path="res://scenes/item.gd" id="21_pm3ni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
 
@@ -43,6 +47,11 @@ texture = ExtResource("5_tbgi4")
 [node name="PhysicsController" type="Node" parent="."]
 script = ExtResource("1_o5qli")
 
+[node name="wormhole" type="Sprite2D" parent="."]
+position = Vector2(833, 13409)
+scale = Vector2(4.5240397, 4.5240397)
+texture = ExtResource("18_pm3ni")
+
 [node name="Planets" type="Node" parent="."]
 
 [node name="Office" type="StaticBody2D" parent="Planets"]
@@ -61,7 +70,43 @@ scale = Vector2(0.254, 0.254)
 texture = ExtResource("6_tefeu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Planets/Office"]
-texture = ExtResource("4_jyhfs")
+scale = Vector2(1.5195062, 1.5195062)
+texture = ExtResource("5_jscy8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(-18.142927, -319.57147)
+scale = Vector2(0.056412727, 0.056412727)
+texture = ExtResource("7_y6deb")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(167.9999, 267.99994)
+rotation = 1.0421834
+scale = Vector2(0.2668162, 0.2668162)
+texture = ExtResource("8_og1vs")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(409.28574, 596.71423)
+rotation = 4.100216
+scale = Vector2(0.2668162, 0.2668162)
+texture = ExtResource("8_og1vs")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(-215.00015, 135.14287)
+rotation = 2.6891828
+scale = Vector2(0.2668162, 0.2668162)
+texture = ExtResource("8_og1vs")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(-842.28577, 388.57144)
+rotation = 5.7285624
+scale = Vector2(0.2668162, 0.2668162)
+texture = ExtResource("8_og1vs")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Planets/Office"]
+position = Vector2(-967.57153, 976.4286)
+rotation = 7.3386145
+scale = Vector2(0.2668162, 0.2668162)
+texture = ExtResource("8_og1vs")
 
 [node name="Farm" type="StaticBody2D" parent="Planets"]
 position = Vector2(-4527, 6364)
@@ -157,8 +202,8 @@ scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("9_yc10j")
 
 [node name="Glorch" type="StaticBody2D" parent="Planets"]
-position = Vector2(7782.998, 7622.0005)
-scale = Vector2(1.8672848, 2)
+position = Vector2(7481, 8899)
+scale = Vector2(2, 2)
 script = ExtResource("10_gqmmt")
 mass = 1.30702036854776e+15
 
@@ -257,9 +302,10 @@ autowrap_mode = 0
 [node name="Items" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Items"]
-position = Vector2(7968.0005, 9218.001)
+position = Vector2(7670.001, 10623)
 rotation = 0.84086406
 scale = Vector2(9.907205, 9.907205)
+script = ExtResource("21_pm3ni")
 
 [node name="Sprite2D" type="Sprite2D" parent="Items/StaticBody2D"]
 scale = Vector2(0.08853093, 0.08853093)
@@ -269,7 +315,7 @@ texture = ExtResource("14_dp3eg")
 shape = SubResource("RectangleShape2D_0ld40")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Items"]
-position = Vector2(-7545, 6493)
+position = Vector2(-7545.0005, 6493)
 rotation = 5.1695147
 scale = Vector2(6.987407, 6.987407)
 
@@ -282,3 +328,8 @@ shape = SubResource("RectangleShape2D_0ld40")
 position = Vector2(4.41098, -18.40161)
 scale = Vector2(0.08916494, 0.08916494)
 texture = ExtResource("19_jscy8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Items"]
+position = Vector2(4237.001, 510.00195)
+scale = Vector2(0.056412727, 0.056412727)
+texture = ExtResource("7_y6deb")

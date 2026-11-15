@@ -50,6 +50,8 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+contact_monitor = true
+max_contacts_reported = 50
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
@@ -70,7 +72,7 @@ autoplay = true
 position = Vector2(0, 13)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_fjrip")
-frame_progress = 0.6515911
+frame_progress = 0.26749772
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 position = Vector2(-1, 13)

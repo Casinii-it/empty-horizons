@@ -20,7 +20,7 @@ func _ready() -> void:
 	clear_thoughts()
 	get_node("../RigidBody2D").cutscene = true
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(25).timeout
 	get_node("../RigidBody2D").cutscene = false
 	
 	change_thoughts("....", 4)
