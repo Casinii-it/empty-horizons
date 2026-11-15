@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bks0y33pbd03m"]
+[gd_scene load_steps=17 format=3 uid="uid://bks0y33pbd03m"]
 
 [ext_resource type="Script" uid="uid://cfjtfulhaf46v" path="res://scripts/physics_controller.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dicfqt32vgtq8" path="res://scripts/planet 1.gd" id="2_0wfyh"]
@@ -6,9 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://xt4ni4blyows" path="res://assets/grapple ring.svg" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://c7s4xfcgb27da" path="res://assets/New Project.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c0enckbyj0a2u" path="res://assets/atmosphere.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bfqfoasdp6vp5" path="res://assets/the_glorch/planet_glorch.png" id="6_tipki"]
+[ext_resource type="AudioStream" uid="uid://df2or0t4jciqt" path="res://assets/the_glorch/glorch_music.mp3" id="7_85g3d"]
+[ext_resource type="Texture2D" uid="uid://c8rutc4htqnyy" path="res://assets/the_glorch/glorch_house.png" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://6qtttka6omse" path="res://scripts/intro.gd" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://ccyo2mbu3ng3p" path="res://assets/the_glorch/glorch_monitor.png" id="8_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://8m2fvmgia6or" path="res://assets/the_glorch/glorch_pc.png" id="10_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://csod1uluy3act" path="res://assets/the_glorch/glorch_tree.png" id="11_muem4"]
+[ext_resource type="Texture2D" uid="uid://bfa0mhobr348b" path="res://assets/the_glorch/glorch_motherboard.png" id="14_dp3eg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ld40"]
 
 [node name="Node" type="Node"]
 
@@ -28,57 +37,102 @@ script = ExtResource("1_o5qli")
 
 [node name="Planets" type="Node" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Planets"]
-position = Vector2(3715, 2822.9998)
+[node name="Small" type="StaticBody2D" parent="Planets"]
+position = Vector2(3714.9998, 2823)
 scale = Vector2(7, 7)
 script = ExtResource("2_0wfyh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D"]
-scale = Vector2(30.219269, 30.219269)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Small"]
+scale = Vector2(29.312, 29.312)
 shape = SubResource("CircleShape2D_o5qli")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Small"]
 rotation = -3.1415925
 scale = Vector2(0.254, 0.254)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Small"]
 texture = ExtResource("4_jyhfs")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Planets"]
+[node name="Large" type="StaticBody2D" parent="Planets"]
 position = Vector2(-4527, 6364)
 scale = Vector2(9.898, 9.898)
 script = ExtResource("2_0wfyh")
-mass = 2e+19
+mass = 2e+30
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D2"]
-scale = Vector2(30.219269, 30.219269)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Large"]
+scale = Vector2(29.312, 29.312)
 shape = SubResource("CircleShape2D_o5qli")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D2"]
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Large"]
 rotation = 3.1415927
 scale = Vector2(0.28946722, 0.28946722)
 texture = ExtResource("6_tefeu")
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Large"]
 texture = ExtResource("4_jyhfs")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Planets"]
-position = Vector2(-804.00006, -1227)
-scale = Vector2(1.75944, 1.75944)
+[node name="Glorch" type="StaticBody2D" parent="Planets"]
+position = Vector2(7782.998, 7622.0005)
+scale = Vector2(2, 2)
 script = ExtResource("2_0wfyh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/StaticBody2D3"]
-scale = Vector2(30.219269, 30.219269)
+[node name="Sprite2D" type="Sprite2D" parent="Planets/Glorch"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_tipki")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(228.00098, -922.50024)
+rotation = 0.2500998
+scale = Vector2(0.59570456, 0.59570456)
+texture = ExtResource("7_a8y0u")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-341.99902, -808.00024)
+rotation = -0.41707158
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("8_jkv2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planets/Glorch"]
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_o5qli")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Planets/StaticBody2D3"]
-rotation = -3.1415925
-scale = Vector2(0.254, 0.254)
-texture = ExtResource("6_tefeu")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Planets/Glorch"]
+scale = Vector2(2, 2)
+stream = ExtResource("7_85g3d")
+pitch_scale = 1.92
+autoplay = true
+max_distance = 4000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets/StaticBody2D3"]
-texture = ExtResource("4_jyhfs")
+[node name="Sprite2D4" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-770.499, -546.50024)
+rotation = -0.9634342
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-265.49902, 817.49976)
+rotation = -2.7503943
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-155.99902, 890.99976)
+rotation = -2.8998413
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(-45.999023, 878.49976)
+rotation = -2.8998413
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("10_jbj1t")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Planets/Glorch"]
+position = Vector2(130.00098, -1450.5002)
+rotation = 1.7082503
+scale = Vector2(0.87709403, 0.87709403)
+texture = ExtResource("11_muem4")
 
 [node name="Player" parent="." instance=ExtResource("2_jyhfs")]
 
@@ -114,3 +168,17 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Node" type="Node" parent="UI"]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Items"]
+position = Vector2(7968.0005, 9218.001)
+rotation = 0.84086406
+scale = Vector2(9.907205, 9.907205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/StaticBody2D"]
+scale = Vector2(0.08853093, 0.08853093)
+texture = ExtResource("14_dp3eg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/StaticBody2D"]
+shape = SubResource("RectangleShape2D_0ld40")
